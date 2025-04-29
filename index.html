@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FASHION HAVEN | Premium Online Shopping</title>
+    <!-- favicon -->
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+    <!-- header links -->
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+    <!-- slider links -->
+    <script src="js/jQuery3.4.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div id="headerContainer"></div>
+    
+    <!-- SLIDER -->
+    <div id="sliderContainer"></div>
+    
+    <!-- CONTENT SECTION -->
+    <div id="contentContainer"></div>
+
+    <!-- FOOTER -->
+    <div id="footerContainer"></div>
+
+    <!-- script section -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+        // Load components dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('headerContainer', 'header.html');
+            loadComponent('sliderContainer', 'slider.html');
+            loadComponent('contentContainer', 'content.html');
+            loadComponent('footerContainer', 'footer.html');
+            
+            // Initialize slider
+            setTimeout(function() {
+                $('#containerSlider').slick({
+                    dots: true,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                });
+            }, 1000);
+        });
+        
+        // Function to load components
+        function loadComponent(elementId, url) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById(elementId).innerHTML = this.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+
+    <!-- content JS -->
+    <script src="content.js"></script>
+</body>
+</html>
